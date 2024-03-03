@@ -10,7 +10,6 @@ export default function Card({ title, actions, children }: CardProps) {
 	return (
 		<section>
 			<h2>{title}</h2>
-
 			{actions}
 			{children}
 		</section>

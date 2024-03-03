@@ -12,8 +12,8 @@ function isAnchorProps(props: ButtonProps | AnchorProps): props is AnchorProps {
 }
 export default function Button(props: ButtonProps | AnchorProps) {
 	if (isAnchorProps(props)) {
-		return <a {...props}></a>;
+		return <a className="button" {...props}></a>;
 	}
 
-	return <button {...props}></button>;
+	return <button className="button" {...props}></button>;
 }
