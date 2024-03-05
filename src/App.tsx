@@ -1,22 +1,21 @@
+import { useRef } from "react";
 import Button from "./components/Button";
-import Form from "./components/Form";
+import Form, { FormHandle } from "./components/Form";
 import Input from "./components/Input";
 
-function App() {
-	const saveData = (data: unknown) => {
-		console.log(data);
+export default function App() {
+	const formRef = useRef<FormHandle>(null);
+	const onSaveHandeler = (data: unknown) => {
+		const value = data as {name: string}
+		console.log(value);
+		formRef.current?.clear();
 	};
 	return (
 		<main>
-			<Form onSave={saveData}>
-				<Input type="text" label="name" id="name" />
-				<Input type="number" label="age" id="age" />
-				<p>
-					<Button>Save</Button>
-				</p>
+			<Form onSave={onSaveHandeler} ref={formRef}>
+				<Input name="name" label="Name" id="name" />
+				<Button>Submit</Button>
 			</Form>
 		</main>
 	);
 }
-
-export default App;
